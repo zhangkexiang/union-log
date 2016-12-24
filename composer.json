@@ -1,0 +1,38 @@
+{
+    "name": "laravel-dev-common/union-log",
+    "description": "Laravel dev log util",
+    "type":"util",
+    "keywords": ["log", "util"],
+    "license": "MIT",
+    "homepage": "https://git.oschina.net/devunion/union-log",
+    "authors": [
+        {
+            "name": "coding",
+            "email": "zhangkexiang@qingdao1024.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "monolog/monolog": "~1.11"
+    },
+    "replace": {
+    },
+    "autoload": {
+        "classmap": [
+        ],
+        "files": [
+        ],
+        "psr-4": {
+            "Union\\": "src/"
+        }
+    },
+    "suggest": {
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
+
