@@ -13,6 +13,7 @@
     ],
     "require": {
         "php": ">=5.5.9",
+
         "monolog/monolog": "~1.11"
     },
     "replace": {
@@ -23,7 +24,8 @@
         "files": [
         ],
         "psr-4": {
-            "Union\\": "src/"
+            "Union\\": "src/",
+            "UnionConfig\\":"config/"
         }
     },
     "suggest": {
