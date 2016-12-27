@@ -6,7 +6,10 @@ laravel5.1结构中 在config文件夹创建union.php
 example:
 
 return [
-    'sms'=>'/tmp/laravel.log'
+    'log'=>[
+        'sms'=>'/tmp/laravel.log'
+    ]
+
 ];
 
 使用:

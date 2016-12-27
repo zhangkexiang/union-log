@@ -25,6 +25,25 @@ class Log
     {
         $this->monolog = new Logger($name);
     }
+
+//  程序入口
+    public static function __callStatic($method,$parameters){
+        $location = '';
+        //测试环境和 与laravel搭配的环境判断
+        $debug_backtrace = debug_backtrace();
+
+//      laravel环境可以打印 调用日志位置
+        if(sizeof($debug_backtrace)>2){
+            $location = $debug_backtrace[2]['class'].':'.$debug_backtrace[1]['line'].':';
+        }else{
+            $location = $debug_backtrace[1]['class'].':'.$debug_backtrace[0]['line'].':';;
+        }
+
+        $arr = explode('_',$method);
+        array_push($arr,$location);
+        call_user_func_array([new static('union-log '.$arr[0]), 'write'],array_merge($arr,$parameters));
+    }
+
     //声明成私有方法 外部通过静态调用则访问不到该方法进入 __callStatic 方法 而 callstatic方法中可以调用到private方法
     private function write($name,$level,$location,$msg,$mod='',$limit='debug')
     {
@@ -33,10 +52,11 @@ class Log
         //测试环境和 与laravel搭配的环境判断
         if (function_exists('config')) {
 //          laravel环境中可以取union配置
-            $tmp = config('union.'.$name,'');
+            $tmp = config('union.log.'.$name,'');
         }else{
 //          测试环境获取配置
             $conf = require __DIR__.'/../config/union.php';// 此处不能用用require_once
+            $conf = $conf['log'];
             if(array_key_exists($name,$conf)){
                 $tmp = $conf[$name];
             }else{
@@ -63,23 +83,6 @@ class Log
 //      ----------写日志----------
         $this->monolog->{$level}($location.' '.$msg,[]);
 
-    }
-//  程序入口
-    public static function __callStatic($method,$parameters){
-        $location = '';
-        //测试环境和 与laravel搭配的环境判断
-        $debug_backtrace = debug_backtrace();
-
-//      laravel环境可以打印 调用日志位置
-        if(sizeof($debug_backtrace)>2){
-            $location = $debug_backtrace[2]['class'].':'.$debug_backtrace[1]['line'].':';
-        }else{
-            $location = $debug_backtrace[1]['class'].':'.$debug_backtrace[0]['line'].':';;
-        }
-
-        $arr = explode('_',$method);
-        array_push($arr,$location);
-        call_user_func_array([new static('union-log '.$arr[0]), 'write'],array_merge($arr,$parameters));
     }
 
 }
