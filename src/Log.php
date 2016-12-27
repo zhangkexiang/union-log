@@ -1,6 +1,6 @@
 <?php
 
-namespace Union;
+namespace Union\Log;
 
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;

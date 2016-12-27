@@ -11,7 +11,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 
 //require __DIR__ . '/../src/Log.php';
-use Union\Log;
+use Union\Log\Log;
 //Log::lala_info('qewr','daily');
 //Log::sms_info('asdf');//单个info日志
 Log::sms_info('asdf','daily');//每日的info日志

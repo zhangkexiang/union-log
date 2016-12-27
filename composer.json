@@ -24,8 +24,7 @@
         "files": [
         ],
         "psr-4": {
-            "Union\\": "src/",
-            "UnionConfig\\":"config/"
+            "Union\\Log\\": "src/"
         }
     },
     "suggest": {
