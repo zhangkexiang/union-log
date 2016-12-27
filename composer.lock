@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eacbb08cbcb68068c077e73962e60397",
-    "content-hash": "90ff9e42352ec22aab20ba46a9677600",
+    "hash": "b522ed94662e371aa02d7eb60598cc97",
+    "content-hash": "4dcd75e1ef64def69acd5a94871f42ae",
     "packages": [
+        {
+            "name": "laravel-dev-common/union-config",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zhangkexiang/union-config.git",
+                "reference": "57d4355a3a95514d27720c0e961d3cc416a3591d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/zhangkexiang/union-config/57d4355a3a95514d27720c0e961d3cc416a3591d.zip",
+                "reference": "57d4355a3a95514d27720c0e961d3cc416a3591d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "util",
+            "autoload": {
+                "classmap": [],
+                "files": [
+                    "src/union-functions.php"
+                ],
+                "psr-4": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "coding",
+                    "email": "zhangkexiang@qingdao1024.com"
+                }
+            ],
+            "description": "Laravel dev config util",
+            "homepage": "https://github.com/zhangkexiang/union-config",
+            "keywords": [
+                "config",
+                "util"
+            ],
+            "time": "2016-12-27 05:22:19"
+        },
         {
             "name": "monolog/monolog",
             "version": "1.22.0",
