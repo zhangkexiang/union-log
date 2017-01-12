@@ -13,10 +13,12 @@ return [
 ];
 
 使用:
+```
 use Union\Log;
 //异常情况 没有配置sendsms
 Log::sendsms_info('success','daily');
-Log::sendsms_info('success');//sendsms 配合不存在则默认打印到 /tmp/uion-log.log
+Log::sendsms_info('success');//sendsms 配置不存在则不进行日志打印
+
 //正常情况
 Log::sms_info('asdf');//单个info日志
 Log::sms_info('asdf','daily');//每日的info日志
@@ -25,3 +27,4 @@ Log::sms_info('asdf','daily','error');// 每日的错误日志 限制'error'一�
 
 //debug\info\notice\warning\error\critical\alert\emergency
 
+```

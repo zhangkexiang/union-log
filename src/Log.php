@@ -28,6 +28,9 @@ class Log
 
 //  程序入口
     public static function __callStatic($method,$parameters){
+
+
+
         $location = '';
         //测试环境和 与laravel搭配的环境判断
         $debug_backtrace = debug_backtrace();
@@ -50,25 +53,15 @@ class Log
 //        var_dump(compact('name','level','location','msg','mod'));
 //      ----------文件路径----------
         $tmp = union_config('union.log.'.$name,'');//封装的一个自定义函数 保证 开发 测试 生产环境的配置调用
-//        //测试环境和 与laravel搭配的环境判断
-//        if (function_exists('config')) {
-////          laravel环境中可以取union配置
-//            $tmp = config('union.log.'.$name,'');
-//        }else{
-////          测试环境获取配置
-//            $conf = require __DIR__.'/../config/union.php';// 此处不能用用require_once
-//            $conf = $conf['log'];
-//            if(array_key_exists($name,$conf)){
-//                $tmp = $conf[$name];
-//            }else{
-//                $tmp = '';
-//            }
-//        }
+
         if($tmp===null || $tmp===''){
-            $path = '/tmp/union-log.log';
+            return ;//如果没有配置则不需要打印日志
+//            $path = '/tmp/union-log.log';
         }else{
             $path = $tmp;
         }
+
+
 //      ---------根据mode匹配单个日志还是每日一个日志----------
         $formatter=new LineFormatter("[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n", "Y-m-d H:i:s", false, false);
         if($mod == ''){
